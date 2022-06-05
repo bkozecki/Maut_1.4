@@ -1,0 +1,171 @@
+.intro {
+  // margin-top: 5rem;
+  padding: 1rem 3rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ededed;
+  border-bottom: solid 1px #999;
+
+  @media only screen and (min-width: $bp-largest) {
+    // margin-top: 2rem;
+  }
+
+  &__heading {
+    font-size: 1.6rem;
+    padding: 0 2rem 2rem 2rem;
+    animation: moveInRight 1s ease-out;
+    font-weight: 700;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.4rem;
+      padding: 0;
+    }
+
+    @media only screen and (min-width: $bp-large) {
+      font-size: 2.2rem;
+      padding: 1rem 5rem 2rem 5rem;
+    }
+    @media only screen and (min-width: 1900px) {
+      font-size: 2.3rem;
+      padding: 1rem 8rem;
+    }
+  }
+
+  &__heading3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    color: #111;
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.2rem;
+    }
+    @media only screen and (min-width: $bp-large) {
+      font-size: 1.6rem;
+    }
+    @media only screen and (min-width: 1900px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__btn {
+    font-size: 1.6rem;
+    text-decoration: none;
+    padding: 1.7rem 4.5rem;
+    margin-bottom: 3rem;
+    animation: moveInBtn 1s ease-out 0.75s;
+    animation-fill-mode: backwards;
+    background-image: linear-gradient(
+      -45deg,
+      rgb(79, 23, 37),
+      rgb(148, 38, 37),
+      rgb(79, 23, 37)
+    );
+    background-size: 400% 400%;
+    animation: gradient 3s ease infinite;
+    transition: transform 0.2s;
+    color: #fff;
+    border-radius: 80px;
+    border: 1px solid $color-secondary-dark;
+    text-transform: uppercase;
+    -webkit-box-shadow: 0px 15px 28px -10px rgba(50, 52, 61, 1);
+    -moz-box-shadow: 0px 15px 28px -10px rgba(50, 52, 61, 1);
+    box-shadow: 0px 15px 28px -10px rgba(50, 52, 61, 1);
+    @media only screen and (max-width: $bp-large) {
+      padding: 1.5rem 3rem;
+      font-size: 1.2;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      -webkit-box-shadow: 0px 15px 28px -9px rgba(50, 52, 61, 1);
+      -moz-box-shadow: 0px 15px 28px -9px rgba(50, 52, 61, 1);
+      box-shadow: 0px 15px 28px -9px rgba(50, 52, 61, 1);
+      border-bottom: 2px solid rgb(189, 44, 42);
+      cursor: pointer;
+    }
+  }
+
+  &__span {
+    border-bottom: 3px solid $color-secondary;
+  }
+}
+
+.intro_p-cont {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding: 4rem;
+  background-color: rgb(148, 38, 37);
+  @media only screen and (max-width: 500px) {
+    padding: 2rem;
+  }
+}
+.Intro__p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+  color: #ededed;
+  margin: 0 auto;
+  animation: moveInRight 1s ease-out;
+
+  @media only screen and (max-width: 500px) {
+    font-size: 1.1rem;
+    width: 100%;
+  }
+  @media only screen and (max-width: $bp-small) {
+    text-align: justify;
+  }
+  @media only screen and (min-width: 1900px) {
+    font-size: 1.6rem;
+  }
+}
+.span_intro {
+  border-bottom: 2px solid rgb(148, 38, 37);
+}
+.intro__img {
+  margin-top: -1.5rem;
+  height: 28rem;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.3) 90%,
+      rgba(#ededed, 1) 95%
+    ),
+    url("../img/intro.jpeg");
+  filter: grayscale(0.8);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @media only screen and (max-width: $bp-small) {
+    margin-top: 0;
+    height: 20rem;
+
+    background-size: cover;
+    background-position: 60% 0%;
+  }
+  @media only screen and (min-width: $bp-largest) {
+    margin-top: 0;
+    background-size: cover;
+    background-position: 60% 60%;
+  }
+  @media only screen and (min-width: 1900px) {
+    margin-top: 0;
+    background-size: cover;
+    background-position: 60% 60%;
+  }
+  @media only screen and (min-width: 1900px) {
+    margin-top: 0;
+    background-size: cover;
+    background-position: 60% 60%;
+  }
+  @media only screen and (min-width: 2500px) {
+    margin-top: 0;
+    height: 40rem;
+    background-size: cover;
+    background-position: 60% 60%;
+  }
+}

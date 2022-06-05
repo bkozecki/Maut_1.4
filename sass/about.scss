@@ -1,0 +1,186 @@
+.aboutus {
+  padding: 5rem 2rem 6rem 2rem;
+  background-color: $color-grey-light;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (min-width: 1900px) {
+    padding: 6rem 3rem 9rem 3rem;
+  }
+
+  &__heading {
+    font-size: 1.8rem;
+    border-bottom: 5px solid $color-secondary;
+    text-transform: uppercase;
+    margin-bottom: 5rem;
+    @media only screen and (min-width: 1900px) {
+      font-size: 2rem;
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__text {
+    width: 80%;
+    font-size: 1.1rem;
+    text-align: justify;
+    margin-bottom: 2rem;
+
+    @media only screen and (max-width: $bp-small) {
+      width: 90%;
+    }
+    @media only screen and (min-width: 1900px) {
+      width: 65%;
+      font-size: 1.4rem;
+    }
+  }
+  &__texts {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+    width: 90%;
+
+    @media only screen and (max-width: 1100px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      // margin-left: 8rem;
+    }
+  }
+
+  &__para {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3rem;
+    margin-right: 8rem;
+    @media only screen and (max-width: 1100px) {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: 0;
+    }
+  }
+  &__images {
+    position: relative;
+    width: 100%;
+    padding: 0 2rem;
+    min-height: 15rem;
+    @media only screen and (max-width: 650px) {
+      display: none;
+    }
+  }
+
+  &__image {
+    width: 18rem;
+    height: 13rem;
+    border-radius: 5px;
+    margin-right: 5rem;
+    transition: all 0.2s;
+    -webkit-box-shadow: 0px 0px 29px -10px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 29px -10px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 29px -10px rgba(66, 68, 90, 1);
+
+    @media only screen and (max-width: $bp-large) {
+      width: 15rem;
+      height: 11rem;
+    }
+    @media only screen and (max-width: 1100px) {
+      width: 17rem;
+      height: 13rem;
+    }
+
+    @media only screen and (min-width: 1900px) {
+      width: 25rem;
+      height: 18rem;
+    }
+  }
+}
+
+.image1 {
+  position: absolute;
+  top: -4rem;
+  left: -14rem;
+  z-index: 1;
+
+  @media only screen and (max-width: 1100px) {
+    top: 2rem;
+    left: 2rem;
+  }
+  @media only screen and (min-width: 1900px) {
+    top: -8rem;
+    left: -25rem;
+  }
+}
+
+.image2 {
+  position: absolute;
+  top: -2rem;
+  left: -2rem;
+  z-index: 2;
+
+  @media only screen and (max-width: 1100px) {
+    top: 2rem;
+    left: 38rem;
+  }
+  @media only screen and (max-width: $bp-medium) {
+    top: 2rem;
+    left: 34rem;
+  }
+  @media only screen and (max-width: 900px) {
+    top: 2rem;
+    left: 28rem;
+  }
+  @media only screen and (max-width: 800px) {
+    top: 2rem;
+    left: 22rem;
+  }
+  @media only screen and (max-width: 700px) {
+    top: 3rem;
+    left: 18rem;
+  }
+  @media only screen and (min-width: 1900px) {
+    top: -5rem;
+    left: -3rem;
+  }
+}
+.image3 {
+  position: absolute;
+  top: 3rem;
+  left: -8rem;
+  z-index: 3;
+  @media only screen and (max-width: 1100px) {
+    top: 4rem;
+    left: 20rem;
+  }
+  @media only screen and (max-width: $bp-medium) {
+    top: 4rem;
+    left: 18rem;
+  }
+  @media only screen and (max-width: 900px) {
+    top: 5rem;
+    left: 15rem;
+  }
+  @media only screen and (max-width: 800px) {
+    top: 6rem;
+    left: 12rem;
+  }
+  @media only screen and (max-width: 700px) {
+    top: 6rem;
+    left: 10rem;
+  }
+  @media only screen and (min-width: 1900px) {
+    top: 0rem;
+    left: -15rem;
+  }
+}
+
+.image1:hover,
+.image2:hover,
+.image3:hover {
+  transform: scale(1.05);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}

@@ -1,0 +1,109 @@
+// COLOR VARIABLES
+$color-primary: rgb(169, 131, 108);
+$color-primary-light: rgb(244, 239, 233);
+$color-primary-dark: rgb(43, 40, 37);
+
+$color-secondary: rgb(148, 38, 37);
+$color-secondary-dark: rgb(79, 23, 37);
+
+$color-grey-light: #f7f7f7;
+$color-grey-dark: rgb(56, 59, 71);
+$color-grey-dark-2: rgb(34, 47, 66);
+
+// FONT VARIABLES
+$font-primary: "Nunito", sans-serif;
+$font-display: "Proza Libre", sans-serif;
+
+// RESPONSIVE BREAKPOINTS
+$bp-huge: 100em;
+$bp-largest: 90em; /* / 16*/
+$bp-large: 75em; // 1200px
+$bp-medium: 62.5em; // 1000px
+$bp-medium-small: 50em; // 800px;
+$bp-small: 37.5em; // 600px;
+
+// ANIMATIONS
+
+@keyframes moveInLeft {
+  0% {
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    transform: translateX(100px);
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInBtn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  80% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-size: 62.5%;
+  font-family: $font-display;
+  color: black;
+  line-height: 1.6;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
