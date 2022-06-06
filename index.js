@@ -1,5 +1,3 @@
-// "use strict";
-
 // ------------- Start ----------
 const btnSend = document.querySelector("#btnSend");
 const modal2 = document.querySelector(".modal2");
@@ -71,12 +69,12 @@ btnSend.addEventListener("click", function (e) {
 });
 
 // --------- CALCULATOR -------------
-let clickCount = 1;
-let clickLimit = 5;
+let clickCount = 0;
+let clickLimit = 6;
 function addItems() {
   idIndex = idIndex + 1;
 
-  if (clickCount <= clickLimit) {
+  if (clickCount < clickLimit) {
     let newItem1 = document.createElement("div");
     newItem1.innerHTML =
       `<select id="select_euro${idIndex}" class="input_itemA input_item_new">
@@ -126,9 +124,7 @@ function calcTruck() {
   span = document.querySelector("#result");
 
   // BASE --------------
-  if (isNaN) {
-    alert("Prosze wypełnij pola kalkulatora!");
-  }
+
   if (
     euroClass === "E6" &&
     dmc === "A" &&
@@ -184,6 +180,7 @@ function calcTruck() {
       parseInt(moneyAmountNew * parseInt(truckNoNew.value));
     span.textContent = result;
   }
+  console.log(truckKm, truckNo);
 
   // // ---------- EURO 5 --------------
 
@@ -301,7 +298,6 @@ bntAdd.addEventListener("click", addItems);
 function remover() {
   btnRem = document.getElementById("remove_input" + idIndex);
   newItem = document.getElementById("input_item" + idIndex);
-
   newItem.parentNode.removeChild(newItem);
   idIndex--;
   clickCount--;
@@ -309,4 +305,15 @@ function remover() {
 
 introBtn.addEventListener("click", function () {
   sectionScroll.scrollIntoView({ behavior: "smooth" });
+});
+
+document.querySelector(".header__list").addEventListener("click", function (e) {
+  e.preventDefault();
+  if (
+    e.target.classList.contains("header__listLink") ||
+    e.target.classList.contains("home")
+  ) {
+    const id = e.target.getAttribute("href");
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
 });
