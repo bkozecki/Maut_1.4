@@ -9,46 +9,62 @@ function calcTruck() {
   let truckKm = document.getElementById("input_item_km").value;
 
   let span = document.getElementById("result");
-
-  // let truckNoNew = parseInt(
-  //   document.getElementById(`input_item${idIndex}`).value
-  // );
-  // let euroClassNew = document.getElementById(`select_euro${idIndex}`).value;
-  // let dmcNew = document.getElementById(`input_item_dmc${idIndex}`).value;
-  // let truckKmNew = document.getElementById(`input_item_km${idIndex}`).value;
-  // // console.log(truckKm, euroClass, dmc, truckNo);
-  // console.log(truckKmNew, euroClassNew, dmcNew, truckNoNew);
-
-  //   const e6 = {
-  //     name: "E6",
-  //     dmc: "A",
-  //     p1: 0.014,
-  //     p2: 0.2
-  //   };
-  //
-  // let resutCllass ;
-  //
-  // let userInput = "E6";
-  //   switch (userInput) {
-  //     case "E6":
-  //     resutCllass=e6;
-  //
-  //   }
-
-  // } else if ((euroClass === "E6") & (dmc === "B")) {
-  //   let moneyAmount = truckKm * 0.002 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E6") & (dmc === "C")) {
-  //   let moneyAmount = truckKm * 0.004 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E6") & (dmc === "D")) {
-  //   let moneyAmount = truckKm * 0.005 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // }
-  // BASE --------------
+  if (
+    euroClass === "E6" &&
+    dmc === "A" &&
+    euroClassNew === undefined &&
+    dmcNew === undefined
+  ) {
+    let moneyAmount = truckKm * 0.014 * 11;
+    let result = parseInt(moneyAmount * truckNo);
+    span.textContent = result;
+  } else if (
+    euroClass === "E6" &&
+    dmc === "A" &&
+    euroClassNew.value === "E6" &&
+    dmcNew.value === "A"
+  ) {
+    let moneyAmount = truckKm * 0.014 * 11;
+    let moneyAmountNew = truckKmNew.value * 0.014 * 11;
+    let result =
+      parseInt(moneyAmount * truckNo) +
+      parseInt(moneyAmountNew * parseInt(truckNoNew.value));
+    span.textContent = result;
+  } else if (
+    (euroClass === "E6") & (dmc === "B") &&
+    euroClassNew.value === "E6" &&
+    dmcNew.value === "B"
+  ) {
+    let moneyAmount = truckKm * 0.002 * 11;
+    let moneyAmountNew = truckKmNew.value * 0.002 * 11;
+    let result =
+      parseInt(moneyAmount * truckNo) +
+      parseInt(moneyAmountNew * parseInt(truckNoNew.value));
+    span.textContent = result;
+  } else if (
+    (euroClass === "E6") & (dmc === "C") &&
+    euroClassNew.value === "E6" &&
+    dmcNew.value === "C"
+  ) {
+    let moneyAmount = truckKm * 0.004 * 11;
+    let moneyAmountNew = truckKmNew.value * 0.004 * 11;
+    let result =
+      parseInt(moneyAmount * truckNo) +
+      parseInt(moneyAmountNew * parseInt(truckNoNew.value));
+    span.textContent = result;
+  } else if (
+    (euroClass === "E6") & (dmc === "D") &&
+    euroClassNew.value === "E6" &&
+    dmcNew.value === "D"
+  ) {
+    let moneyAmount = truckKm * 0.005 * 11;
+    let moneyAmountNew = truckKmNew.value * 0.005 * 11;
+    let result =
+      parseInt(moneyAmount * truckNo) +
+      parseInt(moneyAmountNew * parseInt(truckNoNew.value));
+    span.textContent = result;
+  }
+  console.log(truckKm, truckNo);
 
   if ((euroClass === "E6") & (dmc === "A")) {
     let moneyAmount = truckKm * 0.014 * 11;

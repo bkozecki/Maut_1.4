@@ -18,16 +18,50 @@ let input = document.querySelectorAll(".input_itemA");
 let bntAdd = document.querySelector(".btn_new");
 let idIndex = 0;
 
-let span;
-let truckNo;
-let euroClass;
-let dmc;
-let truckKm;
+const span = document.querySelector("#result");
 
-let truckNoNew;
-let euroClassNew;
-let dmcNew;
-let truckKmNew;
+let finalResult = 0;
+
+const values = {
+  E6A: 0.014,
+  E6B: 0.002,
+  E6C: 0.004,
+  E6D: 0.005,
+
+  E5A: 0.014,
+  E5B: 0.002,
+  E5C: 0.004,
+  E5D: 0.004,
+
+  E4A: 0.013,
+  E4B: 0.001,
+  E4C: 0.003,
+  E4D: 0.003,
+
+  E3A: 0.012,
+  E3B: 1,
+  E3C: 0.002,
+  E3D: 0.002,
+
+  E2A: 0.011,
+  E2B: -0.001,
+  E2C: 0.001,
+  E2D: 0.001,
+
+  E1A: 0.011,
+  E1B: -0.001,
+  E1C: 0.001,
+  E1D: 0.001,
+};
+
+const initialObj = {
+  eur: document.getElementById("select_euro"),
+  dmc: document.getElementById("input_item_dmc"),
+  truckKm: document.getElementById("input_item_km"),
+  truckNo: document.getElementById("input_item_truck"),
+};
+
+const objArr = [initialObj]; //globalna zmienna
 
 const calc = document.querySelector(".btn_intput");
 
@@ -104,12 +138,15 @@ function addItems() {
 
     inputs.appendChild(newItem1);
 
-    truckNoNew = document.querySelector(`#input_item_truck` + `${idIndex}`);
-    euroClassNew = document.querySelector(`#select_euro` + `${idIndex}`);
-    dmcNew = document.querySelector(`#input_item_dmc` + `${idIndex}`);
-    truckKmNew = document.querySelector(`#input_item_km` + `${idIndex}`);
+    const newObject = {
+      eur: document.querySelector(`#select_euro${idIndex}`),
+      dmc: document.querySelector(`#input_item_dmc${idIndex}`),
+      truckKm: document.querySelector(`#input_item_km${idIndex}`),
+      truckNo: document.querySelector(`#input_item_truck${idIndex}`),
+    };
 
-    span = document.querySelector("#result");
+    objArr.push(newObject);
+
     clickCount++;
   } else {
     return;
@@ -117,178 +154,32 @@ function addItems() {
 }
 
 function calcTruck() {
-  truckNo = parseInt(document.getElementById("input_item_truck").value);
-  euroClass = document.getElementById("select_euro").value;
-  dmc = document.getElementById("input_item_dmc").value;
-  truckKm = document.getElementById("input_item_km").value;
-  span = document.querySelector("#result");
+  // truckNo = parseInt(document.getElementById("input_item_truck").value);
+  // euroClass = document.getElementById("select_euro");
+  // dmc = document.getElementById("input_item_dmc");
+  // truckKm = document.getElementById("input_item_km");
 
-  // BASE --------------
+  for (let obj of objArr) {
+    const eurVal = obj.eur.value; // E6
+    const dmcVal = obj.dmc.value; // A
+    const truckNoVal = obj.truckNo.value;
+    const truckKmVal = obj.truckKm.value;
+    const val = values[eurVal + dmcVal]; // 0.014
+    const result = val * truckNoVal * 11 * truckKmVal;
+    finalResult += result;
+    console.log(val, truckKmVal, truckNoVal);
 
-  if (
-    euroClass === "E6" &&
-    dmc === "A" &&
-    euroClassNew === undefined &&
-    dmcNew === undefined
-  ) {
-    let moneyAmount = truckKm * 0.014 * 11;
-    let result = parseInt(moneyAmount * truckNo);
-    span.textContent = result;
-  } else if (
-    euroClass === "E6" &&
-    dmc === "A" &&
-    euroClassNew.value === "E6" &&
-    dmcNew.value === "A"
-  ) {
-    let moneyAmount = truckKm * 0.014 * 11;
-    let moneyAmountNew = truckKmNew.value * 0.014 * 11;
-    let result =
-      parseInt(moneyAmount * truckNo) +
-      parseInt(moneyAmountNew * parseInt(truckNoNew.value));
-    span.textContent = result;
-  } else if (
-    (euroClass === "E6") & (dmc === "B") &&
-    euroClassNew.value === "E6" &&
-    dmcNew.value === "B"
-  ) {
-    let moneyAmount = truckKm * 0.002 * 11;
-    let moneyAmountNew = truckKmNew.value * 0.002 * 11;
-    let result =
-      parseInt(moneyAmount * truckNo) +
-      parseInt(moneyAmountNew * parseInt(truckNoNew.value));
-    span.textContent = result;
-  } else if (
-    (euroClass === "E6") & (dmc === "C") &&
-    euroClassNew.value === "E6" &&
-    dmcNew.value === "C"
-  ) {
-    let moneyAmount = truckKm * 0.004 * 11;
-    let moneyAmountNew = truckKmNew.value * 0.004 * 11;
-    let result =
-      parseInt(moneyAmount * truckNo) +
-      parseInt(moneyAmountNew * parseInt(truckNoNew.value));
-    span.textContent = result;
-  } else if (
-    (euroClass === "E6") & (dmc === "D") &&
-    euroClassNew.value === "E6" &&
-    dmcNew.value === "D"
-  ) {
-    let moneyAmount = truckKm * 0.005 * 11;
-    let moneyAmountNew = truckKmNew.value * 0.005 * 11;
-    let result =
-      parseInt(moneyAmount * truckNo) +
-      parseInt(moneyAmountNew * parseInt(truckNoNew.value));
-    span.textContent = result;
+    span.textContent = parseInt(finalResult);
+
+    let obj = {
+      liczbaTirow: truckNoVal,
+      spalanie: eurVal,
+      waga: dmcVal,
+      liczbaKm: truckKmVal,
+      zwrotEuro: parseInt(result),
+    };
+    console.log(obj);
   }
-  console.log(truckKm, truckNo);
-
-  // // ---------- EURO 5 --------------
-
-  // if ((euroClass === "E5") & (dmc === "A")) {
-  //   let moneyAmount = truckKm * 0.014 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E5") & (dmc === "B")) {
-  //   let moneyAmount = truckKm * 0.002 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E5") & (dmc === "C")) {
-  //   let moneyAmount = truckKm * 0.004 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E5") & (dmc === "D")) {
-  //   let moneyAmount = truckKm * 0.004 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // }
-
-  // // ------------ EURO 4 ------------
-
-  // if ((euroClass === "E4") & (dmc === "A")) {
-  //   let moneyAmount = truckKm * 0.013 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E4") & (dmc === "B")) {
-  //   let moneyAmount = truckKm * 0.001 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E4") & (dmc === "C")) {
-  //   let moneyAmount = truckKm * 0.003 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E4") & (dmc === "D")) {
-  //   let moneyAmount = truckKm * 0.003 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // }
-
-  // // -----------  EURO 3 ------------
-
-  // if ((euroClass === "E3") & (dmc === "A")) {
-  //   let moneyAmount = truckKm * 0.012 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E3") & (dmc === "B")) {
-  //   let moneyAmount = truckKm * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E3") & (dmc === "C")) {
-  //   let moneyAmount = truckKm * 0.002 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E3") & (dmc === "D")) {
-  //   let moneyAmount = truckKm * 0.002 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // }
-
-  // // ---------- EURO 2 --------------
-
-  // if ((euroClass === "E2") & (dmc === "A")) {
-  //   let moneyAmount = truckKm * 0.011 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E2") & (dmc === "B")) {
-  //   let moneyAmount = (truckKm - truckKm * 1.001) * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E2") & (dmc === "C")) {
-  //   let moneyAmount = truckKm * 0.001 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E2") & (dmc === "D")) {
-  //   let moneyAmount = truckKm * 0.001 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // }
-
-  // // ------------ EURO 1 -------------
-
-  // if ((euroClass === "E1") & (dmc === "A")) {
-  //   let moneyAmount = truckKm * 0.011 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E1") & (dmc === "B")) {
-  //   let moneyAmount = (truckKm - truckKm * 1.001) * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E1") & (dmc === "C")) {
-  //   let moneyAmount = truckKm * 0.001 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // } else if ((euroClass === "E1") & (dmc === "D")) {
-  //   let moneyAmount = truckKm * 0.001 * 11;
-  //   let result = parseInt(moneyAmount * truckNo);
-  //   span.textContent = result;
-  // }
-  // let userData = {
-  //   liczbaTirow: truckNo,
-  //   spalanie: euroClass,
-  //   waga: dmc,
-  //   liczbaKm: truckKm,
-  //   zwrotEuro: result.textContent,
-  // };
-  // console.log(userData);
 }
 
 btnCalc.addEventListener("click", calcTruck);
@@ -298,6 +189,7 @@ bntAdd.addEventListener("click", addItems);
 function remover() {
   btnRem = document.getElementById("remove_input" + idIndex);
   newItem = document.getElementById("input_item" + idIndex);
+
   newItem.parentNode.removeChild(newItem);
   idIndex--;
   clickCount--;
