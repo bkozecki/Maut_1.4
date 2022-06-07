@@ -61,7 +61,7 @@ const initialObj = {
   truckNo: document.getElementById("input_item_truck"),
 };
 
-const objArr = [initialObj]; //globalna zmienna
+const objArr = [initialObj];
 
 const calc = document.querySelector(".btn_intput");
 
@@ -105,6 +105,7 @@ btnSend.addEventListener("click", function (e) {
 // --------- CALCULATOR -------------
 let clickCount = 0;
 let clickLimit = 6;
+
 function addItems() {
   idIndex = idIndex + 1;
 
@@ -154,31 +155,25 @@ function addItems() {
 }
 
 function calcTruck() {
-  // truckNo = parseInt(document.getElementById("input_item_truck").value);
-  // euroClass = document.getElementById("select_euro");
-  // dmc = document.getElementById("input_item_dmc");
-  // truckKm = document.getElementById("input_item_km");
-
   for (let obj of objArr) {
-    const eurVal = obj.eur.value; // E6
-    const dmcVal = obj.dmc.value; // A
+    const eurVal = obj.eur.value;
+    const dmcVal = obj.dmc.value;
     const truckNoVal = obj.truckNo.value;
     const truckKmVal = obj.truckKm.value;
-    const val = values[eurVal + dmcVal]; // 0.014
+    const val = values[eurVal + dmcVal];
     const result = val * truckNoVal * 11 * truckKmVal;
     finalResult += result;
-    console.log(val, truckKmVal, truckNoVal);
 
     span.textContent = parseInt(finalResult);
 
-    let obj = {
+    let userData = {
       liczbaTirow: truckNoVal,
       spalanie: eurVal,
       waga: dmcVal,
       liczbaKm: truckKmVal,
       zwrotEuro: parseInt(result),
     };
-    console.log(obj);
+    console.log(userData);
   }
 }
 
@@ -189,8 +184,8 @@ bntAdd.addEventListener("click", addItems);
 function remover() {
   btnRem = document.getElementById("remove_input" + idIndex);
   newItem = document.getElementById("input_item" + idIndex);
-
   newItem.parentNode.removeChild(newItem);
+  objArr.splice(idIndex);
   idIndex--;
   clickCount--;
 }
