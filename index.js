@@ -12,6 +12,9 @@ const inputsItem = document.querySelectorAll(".inputs_item");
 const btnCalc = document.querySelector("#button_calc");
 const introBtn = document.querySelector(".intro__btn");
 const sectionScroll = document.querySelector("#intro-p");
+const modalName = document.querySelector("#modal_input1");
+const modalEmail = document.querySelector("#modal_input2");
+const modalSelect = document.querySelector("#modal_input3");
 
 let its = document.querySelector(".its");
 let input = document.querySelectorAll(".input_itemA");
@@ -65,6 +68,19 @@ const objArr = [initialObj];
 
 const calc = document.querySelector(".btn_intput");
 
+let userData = {
+  initalData: {
+    liczbaTirow: "",
+    spalanie: "",
+    waga: "",
+    liczbaKm: "",
+    zwrotEuro: "",
+  },
+  imie: "",
+  email: "",
+  płatność: "",
+};
+
 // ------ Modal behavior -------
 
 const hideModal = function () {
@@ -82,25 +98,8 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-calc.addEventListener("click", function (e) {
-  modal.style.display = "block";
-  backdrop.style.display = "block";
-  header.style.display = "none";
-});
-
 closer.addEventListener("click", hideModal);
 closer2.addEventListener("click", hideModal);
-
-btnSend.addEventListener("click", function (e) {
-  e.preventDefault();
-  if (input2.value === "" || input2.value === null) {
-    alert("Prosze wypełnij luki!");
-  } else {
-    modal2.style.display = "block";
-    backdrop.style.display = "block";
-    modal.style.display = "none";
-  }
-});
 
 // --------- CALCULATOR -------------
 let clickCount = 0;
@@ -166,20 +165,54 @@ function calcTruck() {
 
     span.textContent = parseInt(finalResult);
 
-    let userData = {
-      liczbaTirow: truckNoVal,
-      spalanie: eurVal,
-      waga: dmcVal,
-      liczbaKm: truckKmVal,
-      zwrotEuro: parseInt(result),
-    };
+    userData.initalData.liczbaTirow = truckNoVal;
+    userData.initalData.spalanie = eurVal;
+    userData.initalData.waga = dmcVal;
+    userData.initalData.liczbaKm = truckKmVal;
+    userData.initalData.zwrotEuro = parseInt(result);
+  }
+  // console.log(userData);
+}
+
+function sendInfo(e) {
+  e.preventDefault();
+  if (modalEmail.value === "" || modalSelect.value === "") {
+    alert("Prosze wypełnij formularz!");
+    modal.style.display = "block";
+
+    return;
+  } else {
+    userData.imie = modalName.value;
+    userData.email = modalEmail.value;
+    userData.płatność = modalSelect.value;
+    modal2.style.display = "block";
+
     console.log(userData);
   }
 }
 
-btnCalc.addEventListener("click", calcTruck);
-
 bntAdd.addEventListener("click", addItems);
+
+btnCalc.addEventListener("click", function () {
+  if (
+    document.getElementById("input_item_km").value === "" ||
+    document.querySelector(`#input_item_truck`).value === ""
+  ) {
+    alert("Prosze wypełnić formularz!");
+    return;
+  } else {
+    calcTruck();
+    modal.style.display = "block";
+    backdrop.style.display = "block";
+    header.style.display = "none";
+  }
+});
+btnSend.addEventListener("click", function (e) {
+  modal.style.display = "none";
+  backdrop.style.display = "block";
+  header.style.display = "none";
+});
+btnSend.addEventListener("click", sendInfo);
 
 function remover() {
   btnRem = document.getElementById("remove_input" + idIndex);

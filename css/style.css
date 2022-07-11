@@ -828,6 +828,7 @@ button {
   color: #000;
   transition: all 0.2s; }
   .home:hover {
+    cursor: pointer;
     color: #942625; }
 
 .intro {
@@ -1058,3 +1059,42 @@ button {
 
 .us {
   border-bottom: 5px solid #942625; }
+
+.politic_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  padding: 5rem; }
+
+.politics_header {
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 5rem; }
+
+.politics_para {
+  font-size: 1rem;
+  margin-bottom: 1rem; }
+
+.item {
+  margin-left: 2rem;
+  text-align: justify;
+  margin-bottom: 1rem;
+  font-size: 1rem; }
+
+.main_content {
+  margin: 2rem auto; }
+
+.main {
+  font-size: 1rem; }
+
+.inner {
+  margin-left: 3rem;
+  text-align: justify;
+  list-style-type: lower-alpha; }
+
+.politics_heading {
+  font-size: 1rem;
+  text-align: center; }
+
+.a {
+  margin-bottom: 2rem; }
