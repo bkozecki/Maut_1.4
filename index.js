@@ -15,6 +15,7 @@ const sectionScroll = document.querySelector("#intro-p");
 const modalName = document.querySelector("#modal_input1");
 const modalEmail = document.querySelector("#modal_input2");
 const modalSelect = document.querySelector("#modal_input3");
+const addinput = document.querySelector("#add_input");
 
 let its = document.querySelector(".its");
 let input = document.querySelectorAll(".input_itemA");
@@ -70,11 +71,11 @@ const calc = document.querySelector(".btn_intput");
 
 let userData = {
   initalData: {
-    liczbaTirow: "",
-    spalanie: "",
-    waga: "",
-    liczbaKm: "",
-    zwrotEuro: "",
+    liczbaTirow: [],
+    spalanie: [],
+    waga: [],
+    liczbaKm: [],
+    zwrotEuro: [],
   },
   imie: "",
   email: "",
@@ -165,10 +166,10 @@ function calcTruck() {
 
     span.textContent = parseInt(finalResult);
 
-    userData.initalData.liczbaTirow = truckNoVal;
-    userData.initalData.spalanie = eurVal;
-    userData.initalData.waga = dmcVal;
-    userData.initalData.liczbaKm = truckKmVal;
+    userData.initalData.liczbaTirow.push(truckNoVal);
+    userData.initalData.spalanie.push(eurVal);
+    userData.initalData.waga.push(dmcVal);
+    userData.initalData.liczbaKm.push(truckKmVal);
     userData.initalData.zwrotEuro = parseInt(result);
   }
   // console.log(userData);
@@ -202,6 +203,7 @@ btnCalc.addEventListener("click", function () {
     return;
   } else {
     calcTruck();
+
     modal.style.display = "block";
     backdrop.style.display = "block";
     header.style.display = "none";
