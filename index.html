@@ -6,9 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Proza+Libre:wght@400;500;600&display=swap" rel="stylesheet">
-  
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Proza+Libre:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
   <title>Odzyskaj Maut</title>
 </head>
 <body>
@@ -28,6 +30,7 @@
             <h1 class="intro__heading">
                 Prowadzisz firmę transportową, a Twoje samochody poruszają się po drogach niemieckich? 
             </h1>
+            
             <h3 class="intro__heading3">
                 Czy wiesz, że BAG pobierało zawyżone opłaty drogowe i teraz możesz dochodzić <span class="intro__span">ich zwrotu?</span> 
             </h3>
@@ -49,7 +52,7 @@
               <p class="about__img_p">Zapewniamy profesjonalna opiekę</p>
             </section>
             <section class="imgZysk">
-    
+              
               <img src="img/business-and-finance.png" alt="" class="calulator_img img">
               <p class="about__img_p">Walczymy o Twój Zysk</p>
             </section>
@@ -74,18 +77,18 @@
               <h3 class="modal__header_3">Chcesz otrzymać dokładną wycenę? Dowiedzieć się ile dokładnie możesz uzyskąć pieniędzy? Chętnie pomożemy!
                 Wypełnij poniższy formularz, a my skontaktujemy się z Tobą!</h3>
               </div>
-                <form action="" class="modal__inputs">
+                <form action="POST" class="modal__inputs">
                 <div class="modal_input_section">
                   <legend for="name" class="modal_label">Podaj swoje imię</legend>
                   <input type="text" id="modal_input1" class="modal_input" name="name" required>
                 </div>
                 <div class="modal_input_section">
                   <legend for="email" class="modal_label">Podaj swój E-mail</legend>
-                  <input type="text" class="modal_input" name="email" required>
+                  <input type="email" id="modal_input2"class="modal_input" name="email" required>
                 </div>
                 <div class="modal_input_section">
                   <legend for="payment" class="modal_label">W jak sposób dokonywane były płatności</legend>
-                  <select class="madal_input select_imput" name="payment" required>
+                  <select id="modal_input3"class="madal_input select_imput" name="payment" required>
                     <option value="Toll" class="option1">Toll Collect</option>
                     <option value="UTA" class="option2">UTA ONE</option>
                     <option value="TELE" class="option3">TELEPASS</option>
@@ -204,6 +207,7 @@
         <h3 class="footer__heading">Dodatkowe informacje:</h3>
         <ul class="footer__list">
             <li class="footer__list_social"><a href="politics.html" target="_blank" class="footer__link">Polityka Prywatności</a></li>
+            <li class="footer__list_social"><a href="regulamin.html" target="_blank" class="footer__link">Regulamin</a> </li>
         </ul>
         </div>
     </footer>
@@ -211,6 +215,5 @@
 <script src="https://cdn.jsdelivr.net/npm/seamless-scroll-polyfill@latest/lib/bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="index.js" charset="utf-8"></script>
-<script type="text/javascript" src="calculator.js" charset="utf-8"></script>
 
 </body>

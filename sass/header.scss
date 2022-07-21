@@ -97,6 +97,7 @@
   transition: all 0.2s;
 
   &:hover {
+    cursor: pointer;
     color: $color-secondary;
   }
 }
